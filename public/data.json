@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "question": "What is SolidJS?",
+    "options": ["A framework", "A library", "A language"],
+    "answer": "A framework"
+  },
+  {
+    "id": 2,
+    "question": "What language does SolidJS use?",
+    "options": ["Python", "JavaScript", "C++"],
+    "answer": "JavaScript"
+  }
+]
