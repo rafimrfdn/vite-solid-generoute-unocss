@@ -7,6 +7,7 @@ export type Path =
   | `/`
   | `/about`
   | `/quiz`
+  | `/unocss`
 
 export type Params = {
   
