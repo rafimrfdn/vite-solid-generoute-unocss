@@ -2,7 +2,7 @@ import { createSignal, createResource, Show, For } from "solid-js";
 
 // Fetching data from JSON file
 const fetchQuizData = async () => {
-  const response = await fetch("./data.json"); // Ensure this file exists in the `public` folder
+  const response = await fetch("./quizdata.json"); // Ensure this file exists in the `public` folder
   if (!response.ok) throw new Error("Failed to fetch quiz data");
   return response.json();
 };

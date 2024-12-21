@@ -3,6 +3,7 @@ import solidLogo from './assets/solid.svg'
 import viteLogo from '/vite.svg'
 // import QuizApp from './QuizApp.jsx'
 import QuizApp from './QuizNoFetch.jsx'
+import QuizCat from './QuizCat.jsx'
 import './App.css'
 
 function App() {
@@ -24,8 +25,10 @@ function App() {
           count is {count()}
         </button>
       </div>
-      <span><a href="/quiz" class="read-the-docs">Go to Quiz</a> | <a href="/about" class="read-the-docs">About</a> </span>
-      <QuizApp />
+      <span><a href="/quiz" class="read-the-docs">Go to Quiz</a> | <a href="/about" class="read-the-docs">About</a> | <a href="/unocss" class="read-the-docs">Page with UnoCSS</a> </span>
+        <QuizApp/>
+        <QuizCat category="JavaScript" />
+        <QuizCat category="CSS" />
     </>
   )
 }

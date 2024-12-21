@@ -6,6 +6,8 @@ import { components, hooks } from '@generouted/solid-router/client'
 export type Path =
   | `/`
   | `/about`
+  | `/css`
+  | `/javascript`
   | `/quiz`
   | `/unocss`
 

@@ -1,7 +1,12 @@
 import { createSignal, Show, For } from "solid-js";
-import { quizData } from "./quizdata.js"; // Import the JSON directly
+import { quizData } from "./categorizedquiz"; // Import JSON data
 
-export default function QuizApp() {
+export default function QuizCat(props) {
+  // Filter questions by category
+  const categoryQuestions = quizData.filter(
+    (question) => question.category === props.category
+  );
+
   // State to track the current question index
   const [currentQuestionIndex, setCurrentQuestionIndex] = createSignal(0);
 
@@ -20,7 +25,7 @@ export default function QuizApp() {
 
   // Move to the next question
   function handleNext() {
-    if (currentQuestionIndex() < quizData.length - 1) {
+    if (currentQuestionIndex() < categoryQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex() + 1);
     } else {
       setIsQuizCompleted(true); // Mark the quiz as completed
@@ -30,29 +35,31 @@ export default function QuizApp() {
   // Calculate score
   const calculateScore = () => {
     return userAnswers().filter(
-      (answer, index) => answer === quizData[index].answer
+      (answer, index) => answer === categoryQuestions[index].answer
     ).length;
   };
 
   return (
     <div>
-      <h1>Multiple Choice Quiz App</h1>
+      <h1>Quiz App - {props.category}</h1>
       <Show
         when={!isQuizCompleted()}
         fallback={
           <div>
             <h2>Quiz Completed!</h2>
-            <p>Your Score: {calculateScore()} / {quizData.length}</p>
+            <p>
+              Your Score: {calculateScore()} / {categoryQuestions.length}
+            </p>
           </div>
         }
       >
         <div>
           <h2>
-            Question {currentQuestionIndex() + 1} of {quizData.length}
+            Question {currentQuestionIndex() + 1} of {categoryQuestions.length}
           </h2>
-          <p>{quizData[currentQuestionIndex()].question}</p>
+          <p>{categoryQuestions[currentQuestionIndex()].question}</p>
           <div>
-            <For each={quizData[currentQuestionIndex()].options}>
+            <For each={categoryQuestions[currentQuestionIndex()].options}>
               {(option) => (
                 <div>
                   <label>
@@ -60,7 +67,9 @@ export default function QuizApp() {
                       type="radio"
                       name={`question-${currentQuestionIndex()}`}
                       value={option}
-                      checked={userAnswers()[currentQuestionIndex()] === option}
+                      checked={
+                        userAnswers()[currentQuestionIndex()] === option
+                      }
                       onChange={() => handleOptionSelect(option)}
                     />
                     {option}
@@ -73,7 +82,7 @@ export default function QuizApp() {
             onClick={handleNext}
             disabled={!userAnswers()[currentQuestionIndex()]} // Disable if no answer is selected
           >
-            {currentQuestionIndex() === quizData.length - 1
+            {currentQuestionIndex() === categoryQuestions.length - 1
               ? "Finish Quiz"
               : "Next"}
           </button>
