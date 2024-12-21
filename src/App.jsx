@@ -25,8 +25,11 @@ function App() {
           count is {count()}
         </button>
       </div>
-      <span><a href="/quiz" class="read-the-docs">Go to Quiz</a> | <a href="/about" class="read-the-docs">About</a> | <a href="/unocss" class="read-the-docs">Page with UnoCSS</a> </span>
+      <span><a href="/about" class="read-the-docs">About</a> | <a href="/unocss" class="read-the-docs">Page with UnoCSS</a></span>
+            <br/>
+      <span><a href="/quiz" class="read-the-docs">Quiz</a> | <a href="/javascript" class="read-the-docs">Javascript Quiz</a> | <a href="/css" class="read-the-docs">CSS Quiz</a></span>
         <QuizApp/>
+
         <QuizCat category="JavaScript" />
         <QuizCat category="CSS" />
     </>
